@@ -14,5 +14,8 @@ Shell, git, etc config files.
 * `.bash_functions`
 * `.profile`
 
+### Vim
+* `.vimrc`
+
 ### Git
 * `.gitconfig`
