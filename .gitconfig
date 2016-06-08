@@ -1,0 +1,23 @@
+[color]
+    ui = auto
+
+# Using (none) for email allows using different emails for different repositories
+[user]
+    name = Marc Wrobel
+    email = "(none)"
+
+[alias]
+    pull-rebase = pull --rebase --stat
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --decorate
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    loln = log --graph --decorate --pretty=oneline --abbrev-commit --all -n20
+    wdiff = diff --color-words
+    wshow = show --color-words
+
+[push]
+    default = simple
+
+# use separate file for email / github token / etc
+[include]
+  path = ~/.gitconfig.local

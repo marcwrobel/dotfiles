@@ -12,3 +12,6 @@ Shell, git, etc config files.
 * `.bashrc`
 * `.bash_aliases`
 * `.bash_functions`
+
+### Git
+* `.gitconfig`
