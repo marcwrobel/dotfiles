@@ -85,3 +85,7 @@ fi
 
 # Enable friendly PS1 in git checkout
 PS1="\[\$(branch_color)\]\$(parse_git_branch)\[$(tput sgr0)\]$PS1"
+
+# SDKMAN initialization
+export SDKMAN_DIR=~/.sdkman
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
