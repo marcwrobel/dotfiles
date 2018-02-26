@@ -13,6 +13,9 @@ set background=dark
 set t_Co=256
 syntax on
 
+" Make tabs and eol spaces visible
+set listchars=tab:>-,trail:·
+
 "------------------------------------------------------------
 " Must have options
 "
