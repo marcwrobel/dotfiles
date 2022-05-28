@@ -46,6 +46,13 @@
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt-fetchpruneTags
   pruneTags = true
 
+# Use diff-highlight for diffs. See https://git.kernel.org/pub/scm/git/git.git/tree/contrib/diff-highlight/README or
+# https://veronneau.org/a-better-git-diff.html.
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
+
 [pull]
   # fast-forward only
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt-pullrebase
