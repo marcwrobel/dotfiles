@@ -25,6 +25,11 @@
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt-commitgpgSign
   gpgSign = true
 
+[core]
+  # Global gitignore.
+  # https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreexcludesFile
+  excludesFile = ~/.gitignore_global
+
 [diff]
   # Colors moved lines in diffs differently.
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt-diffcolorMoved
