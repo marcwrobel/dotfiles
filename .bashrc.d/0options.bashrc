@@ -1,4 +1,4 @@
-# Enable options, see https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
+# Enable options, see https://www.gnu.org/software/bash/manual/bash.html.
 
 # Correct minor errors in the spelling of a directory component in a cd command.
 shopt -s cdspell
@@ -21,3 +21,6 @@ HISTCONTROL=ignoreboth
 
 # Save the history after each command finishes
 export PROMPT_COMMAND="history -a"
+
+# Set search path for the cd builtin command (non-existent directories are not an issue).
+export CDPATH=".:~:~/projects"
