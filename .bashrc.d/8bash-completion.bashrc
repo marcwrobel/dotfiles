@@ -1,6 +1,6 @@
-# bash-completion related configuration.
+#!/bin/env bash
 
-# Enable programmable completion features.
+# Enable bash-completion.
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion

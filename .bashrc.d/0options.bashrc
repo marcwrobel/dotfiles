@@ -1,4 +1,6 @@
-# Enable options, see https://www.gnu.org/software/bash/manual/bash.html.
+#!/bin/env bash
+
+# Enable bash options, see https://www.gnu.org/software/bash/manual/bash.html.
 
 # Correct minor errors in the spelling of a directory component in a cd command.
 shopt -s cdspell

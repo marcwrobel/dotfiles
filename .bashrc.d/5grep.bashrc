@@ -1,4 +1,4 @@
-# grep related configuration.
+#!/bin/env bash
 
 # enable color support grep
 if [ -x /usr/bin/dircolors ]; then

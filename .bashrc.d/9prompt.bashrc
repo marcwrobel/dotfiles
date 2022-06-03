@@ -1,3 +1,5 @@
+#!/bin/env bash
+
 # Set a fancy prompt (with git, python virualenv, and debian chroot support).
 
 function __ps1_context() {

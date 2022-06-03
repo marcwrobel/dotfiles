@@ -1,4 +1,4 @@
-# ls related configuration.
+#!/bin/env bash
 
 # Enable color support of ls.
 if [ -x /usr/bin/dircolors ]; then

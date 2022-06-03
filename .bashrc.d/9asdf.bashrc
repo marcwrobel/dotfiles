@@ -1,7 +1,8 @@
-# ASDF initialization.
-export ASDF_DIR="$HOME/.asdf"
+#!/bin/env bash
 
-if [ -r $ASDF_DIR/asdf.sh ]; then
+# asdf initialization.
+if [ -r $HOME/.asdf/asdf.sh ]; then
+  export ASDF_DIR="$HOME/.asdf"
   . $ASDF_DIR/asdf.sh
   . $ASDF_DIR/completions/asdf.bash
 

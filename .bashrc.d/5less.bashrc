@@ -1,5 +1,6 @@
-# less related configuration.
+#!/bin/env bash
 
+# more is less
 alias more='less'
 export PAGER=less
 
