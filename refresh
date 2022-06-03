@@ -1,17 +1,26 @@
 #!/usr/bin/env bash
-# Refresh script copied from github.
+
+# Refresh scripts copied from github.
+
+set -Eeuo pipefail
 
 SCRIPT_DIR=$(dirname $(readlink -f "$0"))
 
 # https://github.com/juven/maven-bash-completion
-curl --silent --output "$SCRIPT_DIR/.bashrc.d/8maven-completion.bashrc" 'https://raw.githubusercontent.com/juven/maven-bash-completion/master/bash_completion.bash'
+MAVEN_COMPLETION_SCRIPT="$SCRIPT_DIR/.bashrc.d/8maven-completion.bashrc"
+MAVEN_COMPLETION_URL='https://raw.githubusercontent.com/juven/maven-bash-completion/master/bash_completion.bash'
+curl --silent --output "$MAVEN_COMPLETION_SCRIPT" "$MAVEN_COMPLETION_URL"
 
 # https://github.com/dysosmus/ansible-completion
 for command in ansible ansible-doc ansible-galaxy ansible-playbook ansible-pull ansible-vault; do
-  curl --silent --output "$SCRIPT_DIR/.bashrc.d/8$command-completion.bashrc" "https://raw.githubusercontent.com/dysosmus/ansible-completion/master/$command-completion.bash"
+  ANSIBLE_COMPLETION_SCRIPT="$SCRIPT_DIR/.bashrc.d/8$command-completion.bashrc"
+  ANSIBLE_COMPLETION_URL="https://raw.githubusercontent.com/dysosmus/ansible-completion/master/$command-completion.bash"
+  curl --silent --output "$ANSIBLE_COMPLETION_SCRIPT" "$ANSIBLE_COMPLETION_URL"
 done
 
 # https://git.kernel.org/pub/scm/git/git.git/tree/contrib/diff-highlight
-echo '#!/usr/bin/perl' > bin/diff-highlight
-curl --silent 'https://git.kernel.org/pub/scm/git/git.git/plain/contrib/diff-highlight/DiffHighlight.pm' >> bin/diff-highlight
-curl --silent 'https://git.kernel.org/pub/scm/git/git.git/plain/contrib/diff-highlight/diff-highlight.perl' >> bin/diff-highlight
+DIFF_HIGHLIGHT_SCRIPT='bin/diff-highlight'
+DIFF_HIGHLIGHT_URL='https://git.kernel.org/pub/scm/git/git.git/plain/contrib/diff-highlight/'
+echo '#!/usr/bin/perl' > "$DIFF_HIGHLIGHT_SCRIPT"
+curl --silent "$DIFF_HIGHLIGHT_URL/DiffHighlight.pm" >> "$DIFF_HIGHLIGHT_SCRIPT"
+curl --silent "$DIFF_HIGHLIGHT_URL/diff-highlight.perl" >> "$DIFF_HIGHLIGHT_SCRIPT"
