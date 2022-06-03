@@ -1,6 +1,3 @@
-# Script from https://github.com/juven/maven-bash-completion (2022-06-03).
-# See also : https://maven.apache.org/guides/mini/guide-bash-m2-completion.html.
-
 function_exists()
 {
 	declare -F $1 > /dev/null
@@ -64,7 +61,7 @@ __find_mvn_projects()
 }
 
 function_exists _realpath ||
-_realpath ()
+_realpath () 
 {
     if [[ -f "$1" ]]
     then
@@ -82,7 +79,7 @@ _realpath ()
         fi
     else
         # file *cannot* exist
-        return 1 # failure
+        return 1 # failure    
     fi
 
     # suppress shell session termination messages on macOS
@@ -108,13 +105,13 @@ __pom_hierarchy()
     	## <parent> is present but not defined, assume ../pom.xml
     	if [ -z "$parent_pom_relative" ]; then
     	    parent_pom_relative="../pom.xml"
-    	fi
+    	fi 
 
     	## if pom exists continue else break
     	parent_pom=`_realpath "${pom%/*}/$parent_pom_relative"`
-        if [ -n "$parent_pom" ]; then
+        if [ -n "$parent_pom" ]; then 
             pom=$parent_pom
-    	else
+    	else 
     	    break
         fi
     	POM_HIERARCHY+=("$pom")
@@ -203,7 +200,7 @@ _mvn()
     local options="-Dmaven.test.skip=true|-DskipTests|-DskipITs|-Dtest|-Dit.test|-DfailIfNoTests|-Dmaven.surefire.debug|-DenableCiProfile|-Dpmd.skip=true|-Dcheckstyle.skip=true|-Dtycho.mode=maven|-Dmaven.javadoc.skip=true|-Dgwt.compiler.skip|-Dcobertura.skip=true|-Dfindbugs.skip=true||-DperformRelease=true|-Dgpg.skip=true|-DforkCount"
 
     local profile_settings=`[ -e ~/.m2/settings.xml ] && grep -e "<profile>" -A 1 ~/.m2/settings.xml | grep -e "<id>.*</id>" | sed 's/.*<id>//' | sed 's/<\/id>.*//g' | tr '\n' '|' `
-
+    
     local profiles="${profile_settings}|"
     for item in ${POM_HIERARCHY[*]}
     do
