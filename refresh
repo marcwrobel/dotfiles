@@ -10,3 +10,8 @@ curl --silent --output "$SCRIPT_DIR/.bashrc.d/8maven-completion.bashrc" 'https:/
 for command in ansible ansible-doc ansible-galaxy ansible-playbook ansible-pull ansible-vault; do
   curl --silent --output "$SCRIPT_DIR/.bashrc.d/8$command-completion.bashrc" "https://raw.githubusercontent.com/dysosmus/ansible-completion/master/$command-completion.bash"
 done
+
+# https://git.kernel.org/pub/scm/git/git.git/tree/contrib/diff-highlight
+echo '#!/usr/bin/perl' > bin/diff-highlight
+curl --silent 'https://git.kernel.org/pub/scm/git/git.git/plain/contrib/diff-highlight/DiffHighlight.pm' >> bin/diff-highlight
+curl --silent 'https://git.kernel.org/pub/scm/git/git.git/plain/contrib/diff-highlight/diff-highlight.perl' >> bin/diff-highlight
