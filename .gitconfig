@@ -13,7 +13,11 @@
   cob = checkout -b
   p = pull
   pr = pull --rebase
+  # Push the current branch to the remote "origin", and set it to track the upstream branch.
+  publish = push -u origin HEAD
   s = status
+  # Commit work in progress.
+  wip = !git add --all && git commit -m
 
 [color]
   # Colorize output.
