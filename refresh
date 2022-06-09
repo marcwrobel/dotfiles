@@ -18,6 +18,13 @@ for command in ansible ansible-doc ansible-galaxy ansible-playbook ansible-pull 
   curl --silent --output "$ANSIBLE_COMPLETION_SCRIPT" "$ANSIBLE_COMPLETION_URL"
 done
 
+# Installing completion by calling quarkus command is slow !
+# https://quarkus.io/guides/cli-tooling#shell-autocomplete-and-aliases
+if type quarkus > /dev/null; then
+  ANSIBLE_COMPLETION_SCRIPT="$SCRIPT_DIR/.bashrc.d/8quarkus-completion.bashrc"
+  quarkus completion > "$ANSIBLE_COMPLETION_SCRIPT"
+fi
+
 # https://git.kernel.org/pub/scm/git/git.git/tree/contrib/diff-highlight
 DIFF_HIGHLIGHT_SCRIPT='bin/diff-highlight'
 DIFF_HIGHLIGHT_URL='https://git.kernel.org/pub/scm/git/git.git/plain/contrib/diff-highlight/'

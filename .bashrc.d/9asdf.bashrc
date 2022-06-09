@@ -10,10 +10,4 @@ if [ -r $HOME/.asdf/asdf.sh ]; then
   if [ -r $ASDF_DIR/plugins/java/set-java-home.bash ]; then
     . $ASDF_DIR/plugins/java/set-java-home.bash
   fi
-
-  # https://github.com/marcwrobel/asdf-quarkus
-  # https://quarkus.io/guides/cli-tooling#shell-autocomplete-and-aliases
-  if type quarkus > /dev/null; then
-    source <(quarkus completion)
-  fi
 fi
