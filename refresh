@@ -11,6 +11,11 @@ MAVEN_COMPLETION_SCRIPT="$SCRIPT_DIR/.bashrc.d/8maven-completion.bashrc"
 MAVEN_COMPLETION_URL='https://raw.githubusercontent.com/juven/maven-bash-completion/master/bash_completion.bash'
 curl --silent --output "$MAVEN_COMPLETION_SCRIPT" "$MAVEN_COMPLETION_URL"
 
+# https://github.com/gradle/gradle-completion
+GRADLE_COMPLETION_SCRIPT="$SCRIPT_DIR/.bashrc.d/8gradle-completion.bashrc"
+GRADLE_COMPLETION_URL='https://raw.githubusercontent.com/gradle/gradle-completion/master/gradle-completion.bash'
+curl --silent --output "$GRADLE_COMPLETION_SCRIPT" "$GRADLE_COMPLETION_URL"
+
 # https://github.com/dysosmus/ansible-completion
 for command in ansible ansible-doc ansible-galaxy ansible-playbook ansible-pull ansible-vault; do
   ANSIBLE_COMPLETION_SCRIPT="$SCRIPT_DIR/.bashrc.d/8$command-completion.bashrc"
