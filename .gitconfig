@@ -8,16 +8,19 @@
   # https://www.git-scm.com/docs/git-log#Documentation/git-log.txt---dateltformatgt
   # https://www.git-scm.com/docs/git-log#_pretty_formats
   lg = log --graph --abbrev-commit --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  # Push the current branch to the remote "origin", and set it to track the upstream branch.
+  publish = push -u origin HEAD
+  # Commit work in progress.
+  wip = !git add --all && git commit -m
+  # Delete merged branches.
+  # https://stackoverflow.com/questions/35171513/how-to-alias-in-git-delete-merged-branches
+  cleanup = !git branch --merged | grep -vE 'main|master|\\*' | xargs -n 1 git branch -d
   # A few useful shortcuts
   co = checkout
   cob = checkout -b
   p = pull
   pr = pull --rebase
-  # Push the current branch to the remote "origin", and set it to track the upstream branch.
-  publish = push -u origin HEAD
   s = status
-  # Commit work in progress.
-  wip = !git add --all && git commit -m
 
 [color]
   # Colorize output.
