@@ -1,6 +1,10 @@
 [alias]
+  # List aliases (https://www.becomebetterprogrammer.com/git-alias/).
+  aliases = git config --get-regexp alias
   # A better git branch (https://snyk.io/blog/10-git-aliases-for-faster-and-productive-git-workflow/).
   br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+  # Delete merged branches (https://stackoverflow.com/questions/35171513/how-to-alias-in-git-delete-merged-branches).
+  cleanup = !git branch --merged | grep -vE 'main|master|\\*' | xargs -n 1 git branch -d
   # A better git log.
   # https://www.git-scm.com/docs/git-log#Documentation/git-log.txt---graph
   # https://www.git-scm.com/docs/git-log#Documentation/git-log.txt---abbrev-commit
@@ -11,8 +15,6 @@
   publish = push -u origin HEAD
   # Commit work in progress.
   wip = !git add --all && git commit -m
-  # Delete merged branches (https://stackoverflow.com/questions/35171513/how-to-alias-in-git-delete-merged-branches).
-  cleanup = !git branch --merged | grep -vE 'main|master|\\*' | xargs -n 1 git branch -d
   # Useful shortcuts
   co = checkout
   cob = checkout -b
