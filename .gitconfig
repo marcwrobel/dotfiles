@@ -5,6 +5,10 @@
   br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
   # Delete merged branches (https://stackoverflow.com/questions/35171513/how-to-alias-in-git-delete-merged-branches).
   cleanup = !git branch --merged | grep -vE 'main|master|\\*' | xargs -n 1 git branch -d
+  # Temporarily ignore files (https://coderwall.com/p/gjp15g/git-temporarily-ignoring-files).
+  freeze = !git update-index --assume-unchanged
+  unfreeze = !git update-index --no-assume-unchanged
+  frozen = !git ls-files -v | grep ^[a-z]
   # A better git log.
   # https://www.git-scm.com/docs/git-log#Documentation/git-log.txt---graph
   # https://www.git-scm.com/docs/git-log#Documentation/git-log.txt---abbrev-commit
