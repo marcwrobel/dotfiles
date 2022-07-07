@@ -94,6 +94,7 @@
   # All tags should be GPG signed.
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt-taggpgSign
   gpgSign = true
+  forceSignAnnotated = true
 
 
 [transfer]
