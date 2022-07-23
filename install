@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+function create_link() {
+  local src=$(readlink -e "$1")
+  local target="${HOME}/$(echo $1 | cut -c '3-')"   # Must strip leading './' from src
+  local target_dir=$(dirname "$target")
+
+  if [ -L "$target" ]; then
+    echo "Skipping $target : already a symlink."
+    return 0
+  elif [ -e "$target" -a ! -f "$target" ]; then
+    echo "Skipping $target : not a file."
+    return 0
+  fi
+
+  if [ -f "$target" ]; then
+    mv -v "$target" "$tmpdir"
+  else
+    mkdir -vp "$target_dir"
+  fi
+
+  ln -svfn "$src" "$target"
+}
+
+[ -z "$HOME" ] && exit 1
+
+tmpdir=$(mktemp -d)
+
+cd "$(dirname $0)"
+for file in $(find . -type f \
+              ! -path './.git/*' \
+              ! -name '.gitignore' \
+              ! -name '.editorconfig' \
+              ! -path "./.idea/*" \
+              ! -name '*.iml' \
+              ! -name $(basename $0) \
+              ! -name refresh \
+              ! -name LICENSE \
+              ! -name '*.md'); do
+  create_link "$file"
+done
+
+exit 0
