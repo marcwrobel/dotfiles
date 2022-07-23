@@ -297,7 +297,7 @@ function _picocli_quarkus_dev() {
   local prev_word=${COMP_WORDS[COMP_CWORD-1]}
 
   local commands=""
-  local flag_opts="-e --errors --verbose --refresh --registry-client -h --help --dry-run --clean --no-debug --suspend"
+  local flag_opts="-e --errors --verbose --refresh --registry-client -h --help --dry-run --clean --offline --no-debug --suspend"
   local arg_opts="--config -D --debug-host --debug-mode --debug-port"
   local mode_option_args="connect listen" # --debug-mode values
 
@@ -493,7 +493,7 @@ function _picocli_quarkus_create_app() {
 
   local commands=""
   local flag_opts="-B --batch-mode --dry-run -e --errors --verbose --refresh --registry-client -h --help --jbang --maven --gradle --gradle-kotlin-dsl --kotlin --scala --no-wrapper --no-code"
-  local arg_opts="--config -o --output-directory -x --extension -S --stream -P --platform-bom --java --package-name -c --app-config -D"
+  local arg_opts="--config -o --output-directory -x --extension --extensions -S --stream -P --platform-bom --java --package-name -c --app-config -D"
   local javaVersion_option_args="11 17" # --java values
 
   type compopt &>/dev/null && compopt +o default
@@ -505,7 +505,7 @@ function _picocli_quarkus_create_app() {
     -o|--output-directory)
       return
       ;;
-    -x|--extension)
+    -x|--extension|--extensions)
       return
       ;;
     -S|--stream)
@@ -545,7 +545,7 @@ function _picocli_quarkus_create_cli() {
 
   local commands=""
   local flag_opts="-B --batch-mode --dry-run -e --errors --verbose --refresh --registry-client -h --help --jbang --maven --gradle --gradle-kotlin-dsl --kotlin --scala --no-wrapper --no-code"
-  local arg_opts="--config -o --output-directory -x --extension -S --stream -P --platform-bom --java --package-name -c --app-config -D"
+  local arg_opts="--config -o --output-directory -x --extension --extensions -S --stream -P --platform-bom --java --package-name -c --app-config -D"
   local javaVersion_option_args="11 17" # --java values
 
   type compopt &>/dev/null && compopt +o default
@@ -557,7 +557,7 @@ function _picocli_quarkus_create_cli() {
     -o|--output-directory)
       return
       ;;
-    -x|--extension)
+    -x|--extension|--extensions)
       return
       ;;
     -S|--stream)
@@ -597,7 +597,7 @@ function _picocli_quarkus_create_extension() {
 
   local commands=""
   local flag_opts="-B --batch-mode --dry-run -e --errors --verbose --refresh --registry-client -h --help --no-unit-test --no-it-test --no-devmode-test"
-  local arg_opts="--config -o --output-directory -S --stream -P --platform-bom -N --namespace-id --extension-name --namespace-name --package-name --without-tests -D"
+  local arg_opts="--config -o --output-directory -S --stream -P --platform-bom -N --namespace-id --extension-name --extension-description --namespace-name --package-name --without-tests -D"
 
   type compopt &>/dev/null && compopt +o default
 
@@ -618,6 +618,9 @@ function _picocli_quarkus_create_extension() {
       return
       ;;
     --extension-name)
+      return
+      ;;
+    --extension-description)
       return
       ;;
     --namespace-name)
