@@ -22,6 +22,7 @@
   # Useful shortcuts
   co = checkout
   cob = checkout -b
+  cm = commit -m
   p = pull
   pr = pull --rebase
   s = status
