@@ -5,4 +5,4 @@ nodejs 18.12.1
 java temurin-17.0.5+8
 maven 3.8.6
 gradle 7.6
-quarkus 2.13.1.Final
+quarkus 2.14.2.Final

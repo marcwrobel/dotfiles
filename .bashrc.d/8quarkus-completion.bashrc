@@ -493,7 +493,7 @@ function _picocli_quarkus_create_app() {
 
   local commands=""
   local flag_opts="-B --batch-mode --dry-run -e --errors --verbose --refresh --registry-client -h --help --jbang --maven --gradle --gradle-kotlin-dsl --kotlin --scala --no-wrapper --no-code"
-  local arg_opts="--config -o --output-directory -x --extension --extensions -S --stream -P --platform-bom --java --package-name -c --app-config -D"
+  local arg_opts="--config -o --output-directory -x --extension --extensions --name --description -S --stream -P --platform-bom --java --package-name -c --app-config -D"
   local javaVersion_option_args="11 17" # --java values
 
   type compopt &>/dev/null && compopt +o default
@@ -506,6 +506,12 @@ function _picocli_quarkus_create_app() {
       return
       ;;
     -x|--extension|--extensions)
+      return
+      ;;
+    --name)
+      return
+      ;;
+    --description)
       return
       ;;
     -S|--stream)
@@ -596,7 +602,7 @@ function _picocli_quarkus_create_extension() {
   local prev_word=${COMP_WORDS[COMP_CWORD-1]}
 
   local commands=""
-  local flag_opts="-B --batch-mode --dry-run -e --errors --verbose --refresh --registry-client -h --help --no-unit-test --no-it-test --no-devmode-test"
+  local flag_opts="-B --batch-mode --dry-run -e --errors --verbose --refresh --registry-client -h --help -C --codestart --no-unit-test --no-it-test --no-devmode-test"
   local arg_opts="--config -o --output-directory -S --stream -P --platform-bom -N --namespace-id --extension-name --extension-description --namespace-name --package-name --without-tests -D"
 
   type compopt &>/dev/null && compopt +o default
