@@ -16,7 +16,7 @@ __gradle-set-project-root-dir() {
 }
 
 __gradle-init-cache-dir() {
-    cache_dir="$HOME/.gradle/completion"
+    cache_dir="${GRADLE_USER_HOME:-$HOME/.gradle}/completion"
     mkdir -p "$cache_dir"
 }
 
@@ -70,7 +70,7 @@ __gradle-generate-script-cache() {
 
     if [[ ! $(find "$cache_dir/$cache_name" -mmin "-${cache_ttl_mins}" 2>/dev/null) ]]; then
         # Cache all Gradle scripts
-        local gradle_build_scripts=$(find "$project_root_dir" -type f -name "*.gradle" -o -name "*.gradle.kts" 2>/dev/null | egrep -v "$script_exclude_pattern")
+        local gradle_build_scripts=$(find "$project_root_dir" -type f -name "*.gradle" -o -name "*.gradle.kts" 2>/dev/null | grep -E -v "$script_exclude_pattern")
         printf "%s\n" "${gradle_build_scripts[@]}" >| "$cache_dir/$cache_name"
     fi
 }
@@ -289,7 +289,7 @@ __gradle-generate-tasks-cache() {
     local -a root_tasks=()
     local -a subproject_tasks=()
     for output_line in ${gradle_tasks_output}; do
-        if [[ "$output_line" =~ ^([[:lower:]][[:alnum:][:punct:]]*)([[:space:]]-[[:space:]]([[:print:]]*))? ]]; then
+        if [[ "$output_line" =~ ^([[:alpha:]][[:alnum:][:punct:]]*)([[:space:]]-[[:space:]]([[:print:]]*))? ]]; then
             task_name="${BASH_REMATCH[1]}"
             task_description="${BASH_REMATCH[3]}"
             gradle_all_tasks+=( "$task_name  - $task_description" )
